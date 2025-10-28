@@ -1,0 +1,106 @@
+  settings:
+    min-height: 10   # Минимальная высота для использования трапки
+    save-radius: 5   # Радиус сохранения блоков при создании трапки
+    check-regions: true   # Включить проверку регионов WorldGuard
+    enable-sounds: true   # Включить звуки
+    enable-particles: true   # Включить частицы
+    enable-effects: true   # Включить эффекты
+    disable-flight: true   # Отключать полет в трапках
+    disable-god: true   # Отключать режим бога в трапках
+    debug: false   # Дебаг режим (логирование флагов)
+
+    # Новые настройки
+    disabled-worlds:
+      - "spawn"
+      - "world_nether"
+      - "world_the_end"
+      - "pvp_arena"
+    allow-in-regions: true   # Разрешить использование трапок в регионах
+    bypass-trap-check: false   # Разрешить байпас проверки трапок (только для админов)
+
+  # Настройки партиклов
+  particles:
+    count: 20    # Количество частиц для игрока
+    offset-x: 0.5   # Смещение по X
+    offset-y: 0.5  # Смещение по Y
+    offset-z: 0.5   # Смещение по Z
+    speed: 0.1   # Скорость частиц
+    circle-radius: 2.0   # Радиус круга для частиц
+    spawn-count: 50    # Количество партиклов вокруг схемы
+    spawn-radius: 3.0   # Радиус спавна партиклов вокруг схемы
+    spawn-height: 2.0   # Высота спавна партиклов вокруг схемы
+
+  traps:
+    basic:
+      schematic: "traps/3x3_trapka.schem"
+      name: "&7 &8&l☆ &x&F&F&0&0&0&0Базовая Трапка"
+      lore:
+        - ''
+        - "  §x&F&F&0&0&0&0Особенности:"
+        - " §x&F&F&0&0&0&0╠ §x&D&D&D&D&D&DСоздает прочную трапку вокруг игрока"
+        - " §x&F&F&0&0&0&0╠ §x&D&D&D&D&D&DБлокирует использование эндер-жемчуга"
+        - " §x&F&F&0&0&0&0╠ §x&D&D&D&D&D&DДлительность: §x&F&F&0&0&0&015 секунд"
+        - ''
+        - "§7Перезарядка: §e30 секунд"
+      material: CHORUS_PLANT
+      cooldown: 30   # Перезарядка в секундах
+      time: 15 # Длительность трапки в секундах
+      sound-start: "BLOCK_ANVIL_PLACE" # Звуки при создании и окончании трапки
+      sound-stop: "BLOCK_ANVIL_LAND"
+      particle-start: "REDSTONE" # Частицы при создании и окончании трапки
+      particle-stop: "REDSTONE"
+      particle-color-start: "#FF0000" # Цвет частиц (для REDSTONE)
+      particle-color-stop: "#00FF00"
+      effects:     # Эффекты на игрока в трапке (ЭФФЕКТ:ВРЕМЯ В СЕКУНДАХ:УРОВЕНЬ ЭФФЕКТА  )
+        - "SLOW:15:1"
+        - "BLINDNESS:15:1"
+      region-flags:     # Флаги региона WorldGuard
+        - "enderpearl:deny"
+        - "pvp:allow"
+        - "block-break:deny"
+        - "block-place:deny"
+        - "invincible:deny"
+        - "fly:deny"
+        - "interact:deny"
+        - "build:deny"      # Запрет на строительство
+        - "chest-access:deny"
+        - "use:deny"
+      region-padding: 3     # Отступ региона от схемы (в блоках)
+
+    advanced:
+      schematic: "traps/5x5_trapka.schem"
+      name: "&7 &8&l☆ &x&5&5&F&F&0&0Улучшенная Трапка"
+      lore:
+        - ''
+        - "  §x&5&5&F&F&0&0Особенности:"
+        - " §x&5&5&F&F&0&0╠ §x&D&D&D&D&D&DСоздает усиленную трапку с эффектами"
+        - " §x&5&5&F&F&0&0╠ §x&D&D&D&D&D&DПолная блокировка телепортации"
+        - " §x&5&5&F&F&0&0╠ §x&D&D&D&D&D&DДлительность: §x&5&5&F&F&0&020 секунд"
+        - " §x&5&5&F&F&0&0╠ §x&D&D&D&D&D&DНаносит эффекты слабости и слепоты"
+        - ''
+        - "§7Перезарядка: §e45 секунд"
+      material: CRYING_OBSIDIAN
+      cooldown: 45
+      time: 20
+      sound-start: "BLOCK_BEACON_ACTIVATE"
+      sound-stop: "BLOCK_BEACON_DEACTIVATE"
+      particle-start: "SOUL_FIRE_FLAME"
+      particle-stop: "DRAGON_BREATH"
+      particle-color-start: "#FF5500"
+      particle-color-stop: "#5500FF"
+      effects:
+        - "SLOW:20:2"
+        - "BLINDNESS:20:1"
+        - "WEAKNESS:20:1"
+      region-flags:
+        - "enderpearl:deny"
+        - "pvp:allow"
+        - "block-break:deny"
+        - "block-place:deny"
+        - "invincible:deny"
+        - "fly:deny"
+        - "interact:deny"
+        - "build:deny"      # Запрет на строительство
+        - "chest-access:deny"
+        - "use:deny"
+      region-padding: 4

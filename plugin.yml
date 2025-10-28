@@ -1,0 +1,54 @@
+name: KTrapLeave
+version: '${project.version}'
+main: ru.wishmine.ktrapleave.KTrapLeave
+api-version: 1.16
+depend: [WorldEdit, WorldGuard]
+softdepend: [PlaceholderAPI]
+author: KOPEHHOU
+description: Плагин для создания трапок с различными скинами и эффектами
+
+commands:
+  ktrapleave:
+    description: Основная команда плагина KTrapLeave
+    usage: |
+      /<command> give <player> <amount> [skin] - Выдать трапку
+      /<command> buyskin [player] <skin> - Купить/выдать скин
+      /<command> setskin [player] <skin> - Установить активный скин
+      /<command> reload - Перезагрузить конфигурацию
+      /<command> list <skins|players> - Список скинов/игроков
+      /<command> help - Помощь по командам
+    permission: ktrapleave.use
+    permission-message: "У вас нет прав на использование этой команды"
+    aliases: [ktrap, trap]
+
+permissions:
+  ktrapleave.use:
+    description: Доступ к основной команде
+    default: true
+  ktrapleave.admin:
+    description: Административные права
+    default: op
+    children:
+      ktrapleave.use: true
+  ktrapleave.skin.*:
+    description: Доступ ко всем скинам
+    default: op
+    children:
+      ktrapleave.skin.one: true
+      ktrapleave.skin.two: true
+      ktrapleave.skin.three: true
+  ktrapleave.skin.one:
+    description: Доступ к скину one
+    default: true
+  ktrapleave.skin.two:
+    description: Доступ к скину two
+    default: false
+  ktrapleave.skin.three:
+    description: Доступ к скину three
+    default: false
+  ktrapleave.bypass:
+    description: Обход ограничений трапок
+    default: op
+  ktrapleave.nocooldown:
+    description: Отключение перезарядки
+    default: op
